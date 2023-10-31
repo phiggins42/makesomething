@@ -28,6 +28,15 @@ Make a dome out of bedrock, without emptying contents.
 /make dome 120 false BEDROCK
 ```
 
+## CHANGELOG
+
+*1.1.0*
+  - TBD
+
+*1.0.0*
+  - Initial Release
+
+
 ## Developing
 
 You should be able to just `mvn install` and `mvn build` to generate an appropriate `.jar` file, to drop into your `$server/plugins` folder.  
