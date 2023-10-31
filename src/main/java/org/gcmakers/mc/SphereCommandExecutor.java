@@ -29,7 +29,7 @@ public class SphereCommandExecutor implements CommandExecutor {
             Player p = (Player) sender;
             Location l = p.getLocation();
             World world = p.getWorld();
-
+            p.sendMessage(l.getYaw() + "");
             if (args.length > 1) {
                 int r = Integer.parseInt(args[1]);
 

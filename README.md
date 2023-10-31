@@ -45,7 +45,7 @@ Make a dome out of bedrock, without emptying contents.
 
 ## Developing
 
-You should be able to just `mvn install` and `mvn build` to generate an appropriate `.jar` file, to drop into your `$server/plugins` folder.  
+You should be able to just `mvn install` and `mvn package` to generate an appropriate `.jar` file, to drop into your `$server/plugins` folder.  
 
 ## TODO
 
@@ -55,3 +55,4 @@ You should be able to just `mvn install` and `mvn build` to generate an appropri
 * better material sets, named material sets
 * Implement some kind of `tags` parsing, for more robust argument passing, eg
   `/make cylinder[r=10,height=15]` instead of positional arguments
+* Simplex Noise? clean-out-upwards algo.
