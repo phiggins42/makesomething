@@ -59,6 +59,26 @@ public class SphereUtil {
 
     }
 
+    public static Map getCircle(int r, int height) {
+        int w = (50 + r) * 2;
+        int h = (50 + r) * 2;
+        double cx = w / 2d;
+        double cy = h / 2d;
+
+        Map coords = new Hashtable();
+
+        for (int yy = 0; yy <= height; yy++) {
+            for (int i = 0; i < 3610; i++) {
+                double radians = (i / 10d) * (Math.PI / 180d);
+                double x = cx + r * Math.sin(radians);
+                double y = cy + r * Math.cos(radians);
+                String xyz = Math.floor(x - cx) + "," + yy + "," +Math.floor(y - cy);
+                coords.putIfAbsent(xyz, true);
+            }
+        }
+        return coords;
+    }
+
     /**
      * Get a full sphere of a particular size
      * @param r the radius

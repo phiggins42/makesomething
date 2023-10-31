@@ -31,7 +31,10 @@ Make a dome out of bedrock, without emptying contents.
 ## CHANGELOG
 
 *1.1.0*
-  - TBD
+  - experimental `arch` command
+  - experimental `ring` command
+  - experimental `circle` command
+  - experimental `cylinder` command
 
 *1.0.1*
   - Fix broken command name in 1.0.0 release
@@ -50,3 +53,5 @@ You should be able to just `mvn install` and `mvn build` to generate an appropri
 * port other geometry things from original javascript code to real spigot plugin/commands
 * walls, towers, spires, arches, etc
 * better material sets, named material sets
+* Implement some kind of `tags` parsing, for more robust argument passing, eg
+  `/make cylinder[r=10,height=15]` instead of positional arguments

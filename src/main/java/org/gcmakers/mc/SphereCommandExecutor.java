@@ -83,13 +83,44 @@ public class SphereCommandExecutor implements CommandExecutor {
         }
     }
     public Map pickPoints(int r, String cmd) {
-        Map points;
+        Map points = null;
         if (Objects.equals(cmd, "dome")) {
             points = getDome(r);
         } else if (Objects.equals(cmd, "bowl")) {
             points = getBowl(r);
         } else if (Objects.equals(cmd, "sphere")) {
             points = getSphere(r);
+        } else if (Objects.equals(cmd, "circle")) {
+            points = getCircle(r, 0);
+        } else if (Objects.equals(cmd, "cylinder")) {
+            // FIXME: we want tags or something for args, ala **kwargs
+            // /make cylinder[r=10,h=20]
+            points = getCircle(r, 10);
+        } else if (Objects.equals(cmd, "ring")) {
+            points = getCircle(r, 0);
+            for (int i = r + 1; i <= r + 5; i++) {
+                Map tmp = getCircle(i, 0);
+                points.putAll(tmp);
+            }
+        } else if (Objects.equals(cmd, "arch")) {
+            // getCirlce(r), but then flop y with either x or z for each point
+            // FIXME: allow variable length of tunnel/arch
+            // FIXME: determine if to switch x or z based on player orientation
+            Map tmp = getCircle(r, 20);
+            points = new Hashtable();
+
+            for (Object pos : tmp.keySet()) {
+                String[] parts = pos.toString().split(",");
+                Double x = Double.parseDouble(parts[0]);
+                Double y = Double.parseDouble(parts[1]);
+                Double z = Double.parseDouble(parts[2]);
+                // an arch is only above y0
+                if (x >= -3) {
+                    String xyz = y.intValue() + "," + x.intValue() + "," + z.intValue();
+                    points.putIfAbsent(xyz, true);
+                }
+
+            }
         } else {
             points = getSphere(r);
         }
