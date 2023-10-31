@@ -6,7 +6,7 @@ public final class MakeSomething extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        getServer().getPluginCommand("geometry").setExecutor(new SphereCommandExecutor());
+        getServer().getPluginCommand("make").setExecutor(new SphereCommandExecutor());
         // experimental/trolly:
         // getServer().getPluginManager().registerEvents(new PlayerMovementListener(), this);
     }
