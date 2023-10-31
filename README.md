@@ -33,6 +33,9 @@ Make a dome out of bedrock, without emptying contents.
 *1.1.0*
   - TBD
 
+*1.0.1*
+  - Fix broken command name in 1.0.0 release
+
 *1.0.0*
   - Initial Release
 
