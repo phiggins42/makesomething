@@ -1,19 +1,27 @@
 package org.gcmakers.mc;
 
-import co.aikar.taskchain.BukkitTaskChainFactory;
-import co.aikar.taskchain.TaskChainFactory;
-import co.aikar.taskchain.TaskChain;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.gcmakers.mc.commands.ItemExecutor;
+import org.gcmakers.mc.commands.MeteorExecutor;
+import org.gcmakers.mc.commands.SphereExecutor;
+
+import org.gcmakers.mc.events.WandEvents;
+import org.gcmakers.mc.items.ItemManager;
 
 public final class MakeSomething extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        getServer().getPluginCommand("make").setExecutor(new SphereCommandExecutor());
-        getServer().getPluginCommand("dig").setExecutor(new DigCommandExecutor());
-        getServer().getPluginCommand("meteor").setExecutor(new MeteorCommandExecutor());
-        // experimental/trolly:
+        ItemManager.init();
+
+        getServer().getPluginManager().registerEvents(new WandEvents(), this);
+        getServer().getPluginCommand("meteor").setExecutor(new MeteorExecutor());
+        getServer().getPluginCommand("make").setExecutor(new SphereExecutor());
+
+//        getServer().getPluginCommand("dig").setExecutor(new DigCommandExecutor());
+//        // experimental/trolly:
         // getServer().getPluginManager().registerEvents(new PlayerMovementListener(), this);
+        // getServer().getPluginManager().registerEvents(new MagicSword(this), this);
     }
 
     @Override

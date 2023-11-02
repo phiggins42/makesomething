@@ -1,22 +1,20 @@
-package org.gcmakers.mc;
+package org.gcmakers.mc.commands;
 
-import static org.gcmakers.mc.SimplexNoise.noise;
+import static org.gcmakers.mc.util.SimplexNoise.noise;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.Location;
-import org.bukkit.Bukkit;
 
 import java.time.Instant;
 import java.util.*;
-import org.bukkit.block.Block;
 import org.bukkit.World;
 import org.bukkit.Material;
-import static org.gcmakers.mc.SphereUtil.*;
+import static org.gcmakers.mc.util.SphereUtil.*;
 
-public class DigCommandExecutor implements CommandExecutor {
+public class DigExecutor implements CommandExecutor {
 
     private final double w = 1000;
     private final double h = 1000;
@@ -47,11 +45,11 @@ public class DigCommandExecutor implements CommandExecutor {
 
                 for (Object pos : coords.keySet()) {
                     String[] parts = pos.toString().split(",");
-                            Double x = Double.parseDouble(parts[0]) + l.getX();
-                            Double y = Double.parseDouble(parts[1]) + l.getY();
-                            Double z = Double.parseDouble(parts[2]) + l.getZ();
-                            Location target = new Location(world, x, y, z);
-                            emptyBetweenFromList(l, target, blacklist);
+                    Double x = Double.parseDouble(parts[0]) + l.getX();
+                    Double y = Double.parseDouble(parts[1]) + l.getY();
+                    Double z = Double.parseDouble(parts[2]) + l.getZ();
+                    Location target = new Location(world, x, y, z);
+                    emptyBetweenFromList(l, target, blacklist);
                 }
 
                 return true;

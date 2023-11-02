@@ -12,3 +12,4 @@ commands:
     usage: /<command> initial_radius
   meteor:
     description: draw a meteor path through the sky
+    usage: /meteor

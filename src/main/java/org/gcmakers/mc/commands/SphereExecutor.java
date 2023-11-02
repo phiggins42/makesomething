@@ -1,18 +1,17 @@
-package org.gcmakers.mc;
+package org.gcmakers.mc.commands;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.Location;
-import org.gcmakers.mc.SphereUtil;
 import java.util.*;
 import org.bukkit.block.Block;
 import org.bukkit.World;
 import org.bukkit.Material;
-import static org.gcmakers.mc.SphereUtil.*;
+import static org.gcmakers.mc.util.SphereUtil.*;
 
-public class SphereCommandExecutor implements CommandExecutor {
+public class SphereExecutor implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {

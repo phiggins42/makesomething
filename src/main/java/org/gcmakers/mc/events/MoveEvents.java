@@ -1,4 +1,4 @@
-package org.gcmakers.mc;
+package org.gcmakers.mc.events;
 
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -9,7 +9,7 @@ import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
 import org.bukkit.Material;
 
-public class PlayerMovementListener implements Listener {
+public class MoveEvents implements Listener {
 
     @EventHandler
     public void onPlayerMove(PlayerMoveEvent event){
@@ -24,3 +24,4 @@ public class PlayerMovementListener implements Listener {
     }
 
 }
+

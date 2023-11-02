@@ -1,4 +1,4 @@
-package org.gcmakers.mc;
+package org.gcmakers.mc.util;
 
 import java.util.*;
 import org.bukkit.Location;
@@ -28,7 +28,7 @@ public class SphereUtil {
     }
 
     public static void emptyBetweenFromList(Location origin, Location dest, Material[] blacklist) {
-        double interval = 1 / 2D;
+        double interval = 1 / 3D;
         double distance = origin.distance(dest);
         Vector difference = dest.toVector().subtract(origin.toVector());
         double points = Math.ceil(distance / interval);
@@ -46,7 +46,7 @@ public class SphereUtil {
     }
 
     public static void drawPath(Location origin, Location dest) {
-        double interval = 1 / 2D;
+        double interval = 1 / 3D;
         double distance = origin.distance(dest);
         Vector difference = dest.toVector().subtract(origin.toVector());
         double points = Math.ceil(distance / interval);
@@ -59,7 +59,7 @@ public class SphereUtil {
     }
 
     public static void clearPath(Location origin, Location dest) {
-        double interval = 1 / 2D;
+        double interval = 1 / 3D;
         double distance = origin.distance(dest);
         Vector difference = dest.toVector().subtract(origin.toVector());
         double points = Math.ceil(distance / interval);

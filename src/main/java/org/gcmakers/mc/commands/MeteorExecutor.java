@@ -1,25 +1,15 @@
-package org.gcmakers.mc;
+package org.gcmakers.mc.commands;
 
-import static org.gcmakers.mc.SimplexNoise.noise;
-
-import co.aikar.taskchain.TaskChain;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.Location;
-import org.bukkit.plugin.Plugin;
-import org.bukkit.scheduler.BukkitRunnable;
 
-import java.time.Instant;
-import java.util.*;
-import org.bukkit.block.Block;
 import org.bukkit.World;
-import org.bukkit.Material;
-import static org.gcmakers.mc.SphereUtil.*;
+import static org.gcmakers.mc.util.SphereUtil.*;
 
-public class MeteorCommandExecutor implements CommandExecutor {
-
+public class MeteorExecutor implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
@@ -62,7 +52,7 @@ public class MeteorCommandExecutor implements CommandExecutor {
 //                    time--;
 //                }
 //            }.runTaskTimer(MakeSomething.getPlugin(MakeSomething.class), 0L, 20L);
-            
+
             return true;
         }
         return false;
