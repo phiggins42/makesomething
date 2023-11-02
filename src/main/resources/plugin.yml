@@ -4,6 +4,11 @@ main: org.gcmakers.mc.MakeSomething
 api-version: '1.20'
 commands:
   make:
-      description: create a geometric shape centered on a player
-      usage: /<command> [sphere|bowl|dome] [radius] [empty|false] [MATERIAL|set]
-      alias: [create-sphere]
+    description: create a geometric shape centered on a player
+    usage: /<command> [sphere|bowl|dome] [radius] [empty|false] [MATERIAL|set]
+    alias: [create-sphere]
+  dig:
+    description: dig upwards from a point
+    usage: /<command> initial_radius
+  meteor:
+    description: draw a meteor path through the sky

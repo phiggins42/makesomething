@@ -29,7 +29,6 @@ public class SphereCommandExecutor implements CommandExecutor {
             Player p = (Player) sender;
             Location l = p.getLocation();
             World world = p.getWorld();
-            p.sendMessage(l.getYaw() + "");
             if (args.length > 1) {
                 int r = Integer.parseInt(args[1]);
 
@@ -41,7 +40,11 @@ public class SphereCommandExecutor implements CommandExecutor {
                         Double x = Double.parseDouble(parts[0])  + l.getX();
                         Double y = Double.parseDouble(parts[1]) + l.getY();
                         Double z = Double.parseDouble(parts[2])  + l.getZ();
-                        emptyBetween(l, new Location(world, x, y, z));
+                        try {
+                            emptyBetween(l, new Location(world, x, y, z));
+                        } catch (InterruptedException e) {
+                            throw new RuntimeException(e);
+                        }
                     }
                 }
 
@@ -121,6 +124,10 @@ public class SphereCommandExecutor implements CommandExecutor {
                 }
 
             }
+        } else if (Objects.equals(cmd, "spire")) {
+            Map tmp = getCircle(r, 10);
+        } else if (Objects.equals(cmd, "meteor")) {
+
         } else {
             points = getSphere(r);
         }

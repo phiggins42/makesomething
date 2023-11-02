@@ -4,6 +4,7 @@ import java.util.*;
 import org.bukkit.Location;
 import org.bukkit.util.Vector;
 import org.bukkit.Material;
+import org.bukkit.block.Block;
 
 public class SphereUtil {
     /**
@@ -12,8 +13,53 @@ public class SphereUtil {
      * @param origin Location the origin location
      * @param dest Location the destination location
      */
-    public static void emptyBetween(Location origin, Location dest) {
+    public static void emptyBetween(Location origin, Location dest) throws InterruptedException {
         double interval = 1 / 3D;
+        double distance = origin.distance(dest);
+        Vector difference = dest.toVector().subtract(origin.toVector());
+        double points = Math.ceil(distance / interval);
+        difference.multiply(1D / points);
+        Location location = origin.clone();
+        for (int i = 0; i < points; i++) {
+            location.add(difference);
+            location.getBlock().setType(Material.AIR);
+            Thread.sleep(1);
+        }
+    }
+
+    public static void emptyBetweenFromList(Location origin, Location dest, Material[] blacklist) {
+        double interval = 1 / 2D;
+        double distance = origin.distance(dest);
+        Vector difference = dest.toVector().subtract(origin.toVector());
+        double points = Math.ceil(distance / interval);
+        difference.multiply(1D / points);
+        Location location = origin.clone();
+        for (int i = 0; i < points; i++) {
+            location.add(difference);
+            Block block = location.getBlock();
+            Material blockMat = block.getType();
+            boolean contains = Arrays.asList(blacklist).contains(blockMat);
+            if (contains) {
+                block.setType(Material.AIR);
+            }
+        }
+    }
+
+    public static void drawPath(Location origin, Location dest) {
+        double interval = 1 / 2D;
+        double distance = origin.distance(dest);
+        Vector difference = dest.toVector().subtract(origin.toVector());
+        double points = Math.ceil(distance / interval);
+        difference.multiply(1D / points);
+        Location location = origin.clone();
+        for (int i = 0; i < points; i++) {
+            location.add(difference);
+            location.getBlock().setType(Material.MAGMA_BLOCK);
+        }
+    }
+
+    public static void clearPath(Location origin, Location dest) {
+        double interval = 1 / 2D;
         double distance = origin.distance(dest);
         Vector difference = dest.toVector().subtract(origin.toVector());
         double points = Math.ceil(distance / interval);
